@@ -1,0 +1,17 @@
+{
+  "name": "tkdl-nightmare",
+  "description": "Downloads TikTok videos"
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "got": "^11.8.1",
+    "moment": "^2.29.1",
+    "nightmare": "^3.0.2"
+  }
+}

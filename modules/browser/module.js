@@ -19,13 +19,13 @@ exports.get = (url) => {
         "ignore-certificate-errors": true,
       },
       openDevTools: false,
-      paths: {
-        userData: `${__dirname}/sessions`,
-      },
-      webPreferences: {
-        partition: 'persist:tiktok',
-        contextIsolation: false,
-      },
+      // paths: {
+      //   userData: `${__dirname}/sessions`,
+      // },
+      // webPreferences: {
+      //   partition: 'persist:tiktok',
+      //   contextIsolation: false,
+      // },
     };
 
     config = { ...config, ...initialconfig };

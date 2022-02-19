@@ -42,10 +42,17 @@ exports.get = (url) => {
           anchor.download = '';
           anchor.id = 'download-anchor';
           document.querySelector('body').appendChild(anchor);
-          return videoUrl;
+          let title = document.querySelector('title').innerText;
+          let ogImageMeta = document.querySelector('meta[property="og:image"]');
+          let ogImage = (ogImageMeta)?document.querySelector('meta[property="og:image"]').getAttribute('content'): null;
+          return {
+            title: title,
+            image: ogImage,
+            video: videoUrl
+          };
         })
-        .then((videoUrl) => {
-          if (typeof videoUrl == 'undefined' || videoUrl == null) {
+        .then((info) => {
+          if (typeof info.video == 'undefined' || info.video == null) {
             reject(new Error(`No video url found.`))
             nightmare
               .end()
@@ -54,7 +61,7 @@ exports.get = (url) => {
             return;
           }
 
-          resolve(videoUrl)
+          resolve(info)
           nightmare
             .end()
             .then(() => {})

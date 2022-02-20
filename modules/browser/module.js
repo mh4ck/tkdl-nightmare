@@ -35,8 +35,13 @@ exports.get = (url) => {
     nightmare
         .goto(url)
         .wait('div[data-e2e="feed-video"]')
+        .wait(3000)
         .evaluate(() => {
-          let videoUrl = document.querySelector('div[data-e2e="feed-video"] video').getAttribute('src');
+          let videoElm = document.querySelector('div[data-e2e="feed-video"] video');
+          if(videoElm == null) {
+            return {};
+          }
+          let videoUrl = videoElm.getAttribute('src');
           let anchor = document.createElement('a');
           anchor.href = videoUrl;
           anchor.download = '';
